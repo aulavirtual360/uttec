@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novedades de la Uttec</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .header {
+      background-color: #0099cc;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .banner {
+      background-color: #66ccff;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      margin: 20px auto;
+      width: 80%;
+      border-radius: 8px;
+      color: #003366;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-control {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-control:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .footer {
+      background-color: #003366;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Novedades de la Uttec</h1>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel">
+      <!-- Envolver cada imagen en un enlace con el URL correspondiente -->
+      <a href="https://www.facebook.com/share/p/1EZzHrr3yV/">
+        <img src="novedad1.jpeg" alt="Novedad 1">
+      </a>
+      <a href="https://www.facebook.com/share/p/165BtSk1sK/" target="_blank">
+        <img src="novedad2.jpeg" alt="Novedad 2">
+      </a>
+      <a href="https://www.facebook.com/share/p/18tTAXawM1/" target="_blank">
+        <img src="novedad3.jpeg" alt="Novedad 3">
+      </a>
+      <a href="https://www.facebook.com/share/p/1HYjLWh9Az/" target="_blank">
+        <img src="novedad4.jpeg" alt="Novedad 4">
+      </a>
+
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-control" id="prev">&#8249;</button>
+      <button class="carousel-control" id="next">&#8250;</button>
+    </div>
+  </div>
+
+  <div class="banner">
+    <p>¡Bienvenidos a las últimas novedades de la Uttec! Mantente al día con todos nuestros eventos.</p>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 Uttec. Todos los derechos reservados.</p>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel img');
+    const totalImages = images.length;
+
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
+
+    function showImage(index) {
+      const offset = -index * 100;
+      document.querySelector('.carousel').style.transform = translateX(${offset}%);
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalImages;
+      showImage(currentIndex);
+    });
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      showImage(currentIndex);
+    });
+  </script>
+
+</body>
+</html>

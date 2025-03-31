@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTTEC Trámites disponibles:</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('BIBLIO.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 255, 0.6); /* Fondo azul semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        .product-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            background-color: #e0f7fa;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .product-item span {
+            font-size: 18px;
+        }
+        .total {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #b3e5fc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #01579b;
+        }
+    </style>
+    <script>
+        function actualizarTotal() {
+            // Obtener las casillas de verificación
+            const productos = document.querySelectorAll('.producto');
+            let total = 0;
+            
+            // Iterar sobre los productos y sumar los seleccionados
+            productos.forEach(producto => {
+                if (producto.checked) {
+                    total += parseFloat(producto.dataset.precio);
+                }
+            });
+            
+            // Actualizar el total en la interfaz
+            document.getElementById('total').textContent = 'Total: $' + total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Uttec trámites disponibles:</h1>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre del cliente</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+
+            <ul class="product-list">
+                <li class="product-item">
+                    <label>
+                        <input type="checkbox" class="producto" data-precio="30" onclick="actualizarTotal()">
+                        Constancia Académica
+                    </label>
+                    <span>$30.00</span>
+                </li>
+                <li class="product-item">
+                    <label>
+                        <input type="checkbox" class="producto" data-precio="60" onclick="actualizarTotal()">
+                        Historial Académico
+                    </label>
+                    <span>$60.00</span>
+                </li>
+                <li class="product-item">
+                    <label>
+                        <input type="checkbox" class="producto" data-precio="10" onclick="actualizarTotal()">
+                        Solicitar Cita Titulación
+                    </label>
+                    <span>$10.00</span>
+                </li>
+            </ul>
+
+            <div class="total" id="total">
+                Total: $0.00
+            </div>
+
+            <button type="submit" class="submit-btn">Confirmar Compra</button>
+        </form>
+    </div>
+</body>
+</html>

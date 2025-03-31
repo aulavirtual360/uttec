@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios Edificio A</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('F3.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: rgba(0, 0, 50, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 80%;
+        }
+        select {
+            padding: 10px;
+            margin: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #0057b3;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilo del apartado "Acceso sin conexión" */
+        .acceso-sin-conexion {
+            background: linear-gradient(to bottom, #a2c8e1, #6db1d8);
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .acceso-sin-conexion h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .acceso-sin-conexion button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .acceso-sin-conexion button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Horarios Edificio A</h1>
+        <label for="carrera">Carrera:</label>
+        <select id="carrera">
+            <option value="gestion">Gestión de Negocios y Proyectos</option>
+            <option value="procesos">Procesos Industriales</option>
+            <option value="nano">Nanotecnología</option>
+        </select>
+        <label for="cuatrimestre">Cuatrimestre:</label>
+        <select id="cuatrimestre">
+            <option value="1">7°</option>
+            <option value="2">8°</option>
+            <option value="3">9°</option>
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                </tr>
+            </thead>
+            <tbody id="horario">
+                <!-- Horario dinámico -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const horarios = {
+            gestion: {
+                1: [
+                    ['15:00 - 17:00', 'Administración del tiempo', 'Modelos de negocio', 'Inglés', 'Administración', 'Inglés'],
+                    ['17:00 - 19:00', 'Gestión del conocimiento', 'Gestión de capital Humano', 'Contabilidad', 'Marketing', 'Libre'],
+                    ['19:00 - 20:00', 'Tutoría', 'Gestión del conocimiento', 'Seminario', 'Finanzas', 'Seminario'],
+                ],
+                2: [
+                    ['13:00 - 16:00', 'Proyectos de Innovación Tec', 'Proyectos de Innovación Tec', 'Proyectos de Innovación Tec', 'Libre', 'Libre'],
+                    ['16:00 - 19:00', 'Planeación y org', 'Inglés', 'Inglés', 'Dirección estratégica', 'Proyectos de Innovación Tec'],
+                    ['19:00 - 21:00', 'Investigación de operaciones', 'Dirección estratégica', 'Dirección estratégica', 'Planeación y org', 'Investigación de operaciones'],
+                ],
+                3: [
+                    ['8:00 - 10:00', 'Estrategia', 'Recursos Humanos', 'Proyectos', 'Innovación', 'Libre'],
+                    ['10:00 - 12:00', 'Gestión de la Producción', 'Marketing', 'Proyectos', 'Comunicación', 'Libre'],
+                    ['12:00 - 14:00', 'Logística', 'Estrategia', 'Gestión', 'Marketing', 'Libre'],
+                ],
+            },
+            procesos: {
+                1: [
+                    ['8:00 - 10:00', 'Química', 'Física', 'Cálculo', 'Procesos', 'Libre'],
+                    ['10:00 - 12:00', 'Máquinas', 'Termodinámica', 'Mecánica', 'Mantenimiento', 'Cálculo'],
+                    ['12:00 - 14:00', 'Materiales', 'Seguridad', 'Tecnología', 'Inglés', 'Automatización'],
+                ],
+                2: [
+                    ['8:00 - 10:00', 'Termodinámica', 'Materiales', 'Control', 'Mantenimiento', 'Cálculo'],
+                    ['10:00 - 12:00', 'Producción', 'Mecánica', 'Cálculo', 'Seguridad', 'Libre'],
+                    ['12:00 - 14:00', 'Automatización', 'Mantenimiento', 'Energía', 'Control', 'Inglés'],
+                ],
+                3: [
+                    ['8:00 - 10:00', 'Producción', 'Calidad', 'Seguridad', 'Automatización', 'Cálculo'],
+                    ['10:00 - 12:00', 'Mantenimiento', 'Calidad', 'Proyectos', 'Logística', 'Inglés'],
+                    ['12:00 - 14:00', 'Gestión', 'Libre', 'Control', 'Sistemas', 'Calidad'],
+                ],
+            },
+            nano: {
+                1: [
+                    ['8:00 - 10:00', 'Nanomateriales', 'Biotecnología', 'Física', 'Química', 'Óptica'],
+                    ['10:00 - 12:00', 'Nanoquímica', 'Electrónica', 'Materiales', 'Inglés', 'Biofísica'],
+                    ['12:00 - 14:00', 'Microfabricación', 'Sensores', 'Inglés', 'Nanotecnología', 'Biotecnología'],
+                ],
+                2: [
+                    ['8:00 - 10:00', 'Nanomateriales', 'Electrónica', 'Física', 'Química', 'Inglés'],
+                    ['10:00 - 12:00', 'Bioingeniería', 'Nanotecnología', 'Sistemas', 'Electrónica', 'Bioingeniería'],
+                    ['12:00 - 14:00', 'Materiales', 'Óptica', 'Libre', 'Tecnología', 'Nanomateriales'],
+                ],
+                3: [
+                    ['8:00 - 10:00', 'Nanofabricación', 'Biotecnología', 'Electrónica', 'Óptica', 'Inglés'],
+                    ['10:00 - 12:00', 'Nanociencia', 'Sistemas', 'Tecnología', 'Nanotecnología', 'Microfabricación'],
+                    ['12:00 - 14:00', 'Sensores', 'Microfabricación', 'Nanomateriales', 'Innovación', 'Libre'],
+                ],
+            }
+        };
+
+        function actualizarHorario() {
+            const carrera = document.getElementById('carrera').value;
+            const cuatrimestre = document.getElementById('cuatrimestre').value;
+            const horarioTabla = document.getElementById('horario');
+            
+            horarioTabla.innerHTML = '';
+            horarios[carrera][cuatrimestre].forEach(hora => {
+                let fila = `<tr><td>${hora[0]}</td>`;
+                for (let i = 1; i < hora.length; i++) {
+                    fila += `<td>${hora[i]}</td>`;
+                }
+                fila += `</tr>`;
+                horarioTabla.innerHTML += fila;
+            });
+        }
+
+        document.getElementById('carrera').addEventListener('change', actualizarHorario);
+        document.getElementById('cuatrimestre').addEventListener('change', actualizarHorario);
+        actualizarHorario();
+
+    </script>
+
+    <!-- Apartado "Acceso sin Conexión" -->
+    <div class="acceso-sin-conexion">
+        <h2>Acceso sin conexión:</h2>
+        <a href="https://drive.google.com/drive/folders/13qW9H4GQ4_aR7xBC-YeM0vHgCFc_mETS?usp=drive_link" target="_blank">
+            <button>Descargar Horarios escolares</button>
+        </a>
+    </div>
+</body>
+</html>
+

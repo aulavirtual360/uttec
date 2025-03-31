@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios según la carrera y cuatrimestre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Horarios según la carrera y cuatrimestre</h2>
+
+        <label for="carrera">Selecciona tu carrera:</label>
+        <select id="carrera">
+            <option value="">--Elige una opción--</option>
+            <option value="ingenieria">Ingeniería</option>
+            <option value="medicina">Medicina</option>
+            <option value="derecho">Derecho</option>
+        </select>
+
+        <label for="cuatrimestre">Selecciona el cuatrimestre:</label>
+        <select id="cuatrimestre">
+            <option value="">--Elige una opción--</option>
+            <option value="1">1° Cuatrimestre</option>
+            <option value="2">2° Cuatrimestre</option>
+            <option value="3">3° Cuatrimestre</option>
+        </select>
+
+        <table id="horario">
+            <thead>
+                <tr>
+                    <th>Día</th>
+                    <th>Materia</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3">Selecciona una carrera y un cuatrimestre</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const horarios = {
+            "ingenieria": {
+                "1": [
+                    { dia: "Lunes", materia: "Matemáticas", hora: "08:00 - 10:00" },
+                    { dia: "Miércoles", materia: "Física", hora: "10:00 - 12:00" }
+                ],
+                "2": [
+                    { dia: "Martes", materia: "Programación", hora: "09:00 - 11:00" },
+                    { dia: "Jueves", materia: "Cálculo", hora: "14:00 - 16:00" }
+                ]
+            },
+            "medicina": {
+                "1": [
+                    { dia: "Lunes", materia: "Anatomía", hora: "07:00 - 09:00" },
+                    { dia: "Miércoles", materia: "Biología", hora: "10:00 - 12:00" }
+                ]
+            }
+        };
+
+        document.getElementById("carrera").addEventListener("change", actualizarHorario);
+        document.getElementById("cuatrimestre").addEventListener("change", actualizarHorario);
+
+        function actualizarHorario() {
+            const carrera = document.getElementById("carrera").value;
+            const cuatrimestre = document.getElementById("cuatrimestre").value;
+            const tabla = document.getElementById("horario").getElementsByTagName("tbody")[0];
+
+            tabla.innerHTML = "<tr><td colspan='3'>Cargando horarios...</td></tr>";
+
+            setTimeout(() => {
+                tabla.innerHTML = "";
+                if (horarios[carrera] && horarios[carrera][cuatrimestre]) {
+                    horarios[carrera][cuatrimestre].forEach(hora => {
+                        let fila = `<tr>
+                            <td>${hora.dia}</td>
+                            <td>${hora.materia}</td>
+                            <td>${hora.hora}</td>
+                        </tr>`;
+                        tabla.innerHTML += fila;
+                    });
+                } else {
+                    tabla.innerHTML = "<tr><td colspan='3'>No hay datos disponibles</td></tr>";
+                }
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>

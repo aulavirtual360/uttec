@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual 360 | UTTEC</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('fondo.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            background: #87CEFA;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            width: 65px;
+        }
+/* Código ext */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #0D47A1; /* Azul oscuro */
+            text-align: center;
+        }
+        h2 {
+            color: #1976D2; /* Azul medio */
+            border-bottom: 3px solid #64B5F6;
+            padding-bottom: 5px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #0D47A1;
+	    text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="codigo.html">Inicio</a>
+        <a href="login.html">Iniciar Sesión</a>
+        <a href="acerca.html">Acerca de la Institución</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="calendario.html">Calendario Académico</a>
+        <a href="horarios.html">Horarios</a>
+        <a href="tramites.html">Trámites</a>
+    </nav>
+
+<p>‎ </p>
+<p>‎ </p>
+<div class="container">
+    <img src="logo.png" alt="Logo UTTEC" style="width: 100px; height: auto; margin-right: 10px; display: block;">
+
+    <div>
+
+        <h1>Universidad Tecnológica de Tecámac UTTEC</h1>
+
+   </div>
+    
+<p class="highlight">Donde la innovación y la tecnología se unen para construir tu futuro. Vinculación con la industria y formación práctica para tu éxito profesional.</p>
+
+    <h2>Modelo educativo</h2>
+    <p>La UTTEC prepara a los estudiantes para el mercado laboral, siendo la única que te ofrece <span class="highlight">título técnico y de ingeniería</span> (Continuidad) en un solo programa.</p>
+
+    <h2>Vinculación con el sector productivo</h2>
+    <p>La UTTEC mantiene <span class="highlight">estrechos lazos con empresas e instituciones</span>, lo que permite a los estudiantes realizar prácticas profesionales y participar en proyectos reales. Esta vinculación facilita la inserción laboral de los egresados.</p>
+
+    <h2>Recursos</h2>
+    <p>La universidad cuenta con <span class="highlight">laboratorios, talleres y equipos de última generación</span> para el aprendizaje práctico de los estudiantes.</p>
+    <p>Mantiene convenios internacionales.</p>
+    <p>Promueve el acceso a <span class="highlight">becas y apoyos económicos</span> para los estudiantes, tanto a nivel federal como estatal.</p>
+</div>
+<p>‎ </p>
+<div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+
+    <a href="https://planner5d.com/es/v?viewMode=2d&key=7743cf62165aa41b00257307ac7ad546" target="_blank" style="text-align: center; display: flex; flex-direction: column; align-items: center; color: white; font-size: 20px; font-weight: bold; text-decoration: none;">
+
+    <p style="margin: 0; background-color: rgba(0, 51, 160, 0.7); padding: 5px; display: inline-block; border-radius: 5px;">Mapa Uttec</p>
+
+        <img src="mapa.jpeg" alt="Mapa Uttec" style="width: 400px; height: 150px; border-radius: 5px;">
+
+    </a>
+
+
+    <a href="https://piuttec.uttecamac.edu.mx/" target="_blank" style="text-align: center; display: flex; flex-direction: column; align-items: center; color: white; font-size: 20px; font-weight: bold; text-decoration: none;">
+
+        <p style="margin: 0; background-color: rgba(0, 51, 160, 0.7); padding: 5px; display: inline-block; border-radius: 5px;">Acceso Calificaciones</p>
+        <img src="piuttec.png" alt="Acceso Piuttec" style="width: 300px; height: 150px; border-radius: 5px;">
+
+    </a>
+</div>
+<p>‎ </p>
+<div style="text-align: center; padding: 7px; background-color: #e0f7fa; color: #01579b; border-top: 3px solid #0288d1; margin-top: 20px;">
+
+    <p style="font-size: 14px; font-weight: bold;">Todos los derechos reservados ©</p>
+
+    <a href="https://aula-virtual-3609.webnode.mx/" style="display: inline-block; padding: 10px 20px; background-color: #0288d1; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Leer política de privacidad</a>
+</div>
+    <img src="logoav360.jpeg" alt="Logo de la Empresa" class="logo">
+</body>
+</html>

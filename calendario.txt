@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calendario Académico</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            text-align: center;
+
+            background: url('F5.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        .calendar-container {
+            width: 80%;
+            margin: auto;
+            background: rgba(0, 51, 102, 0.9);
+            padding: 20px;
+            box-shadow: 0px 0px 15px gray;
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #b3e5fc;
+        }
+        .month {
+            font-size: 26px;
+            font-weight: bold;
+            color: #b3e5fc;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .day {
+            padding: 10px;
+            background: #4682b4;
+            border-radius: 5px;
+            color: white;
+        }
+        .holiday { background: #ff4444; }
+        .exam { background: #ffeb3b; color: black; }
+        .vacation { background: #00bcd4; }
+        .today { background: #4caf50; }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+        .legend div {
+            margin: 5px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .legend span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+
+        }
+
+
+       .acceso-sin-conexion {
+            background: linear-gradient(to bottom, #a2c8e1, #6db1d8);
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .acceso-sin-conexion h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .acceso-sin-conexion button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .acceso-sin-conexion button:hover {
+            background-color: #0056b3;
+        }
+
+</style>
+</head>
+<body>
+    <div class="title">Calendario Académico</div>
+    <div class="calendar-container">
+        <div id="month" class="month">Enero 2025</div>
+        <div class="days" id="days"></div>
+        <button onclick="prevMonth()">Anterior</button>
+        <button onclick="nextMonth()">Siguiente</button>
+    </div>
+    
+    <div class="legend">
+        <div><span style="background: #ff4444;"></span> Feriados</div>
+        <div><span style="background: #ffeb3b;"></span> Días de examen</div>
+        <div><span style="background: #00bcd4;"></span> Vacaciones</div>
+        <div><span style="background: #4caf50;"></span> Hoy</div>
+    </div>
+
+
+    <script>
+
+        const events = {
+
+            '2025-01-01': 'holiday',
+          '2025-01-02': 'vacation',
+          '2025-01-03': 'vacation',
+          '2025-01-04': 'vacation',
+          '2025-01-05': 'vacation',
+          '2025-01-06': 'vacation',
+            '2025-02-03': 'holiday',
+            '2025-03-03': 'holiday',
+            '2025-03-17': 'holiday',
+            '2025-03-01': 'exam',
+          '2025-03-31': 'today',
+            '2025-04-14': 'vacation',
+            '2025-04-15': 'vacation',
+            '2025-04-16': 'vacation',
+            '2025-04-17': 'vacation',
+            '2025-04-18': 'vacation',
+            '2025-04-19': 'vacation',
+            '2025-04-20': 'vacation',
+            '2025-04-21': 'vacation',
+            '2025-04-22': 'vacation',
+            '2025-04-23': 'vacation',
+            '2025-04-24': 'vacation',
+            '2025-04-25': 'vacation',
+            '2025-04-26': 'vacation',
+            '2025-04-27': 'vacation',
+            '2025-04-28': 'vacation',
+            '2025-04-29': 'vacation',
+            '2025-04-30': 'vacation',
+            '2025-05-01': 'holiday',
+            '2025-05-05': 'holiday',
+            '2025-07-05': 'exam',
+            '2025-07-21': 'vacation',
+            '2025-07-22': 'vacation',
+            '2025-07-23': 'vacation',
+            '2025-07-24': 'vacation',
+            '2025-07-25': 'vacation',
+            '2025-07-26': 'vacation',
+            '2025-07-27': 'vacation',
+            '2025-07-28': 'vacation',
+            '2025-07-29': 'vacation',
+            '2025-08-23': 'vacation',
+            '2025-08-24': 'vacation',
+            '2025-08-25': 'vacation',
+            '2025-08-26': 'vacation',
+            '2025-08-27': 'vacation',
+            '2025-08-28': 'vacation',
+            '2025-08-29': 'vacation',
+            '2025-08-30': 'vacation',
+            '2025-08-31': 'vacation',
+            '2025-09-16': 'holiday',
+            '2025-10-25': 'exam',
+            '2025-11-03': 'holiday',
+            '2025-11-17': 'holiday',
+            '2025-07-22': 'vacation',
+            '2025-07-23': 'vacation',
+            '2025-07-24': 'vacation',
+            '2025-07-25': 'vacation',
+            '2025-07-26': 'vacation',
+            '2025-07-27': 'vacation',
+            '2025-07-28': 'vacation',
+            '2025-07-29': 'vacation',
+            '2025-12-23': 'vacation',
+            '2025-12-24': 'vacation',
+            '2025-12-25': 'vacation',
+            '2025-12-26': 'vacation',
+            '2025-12-27': 'vacation',
+            '2025-12-28': 'vacation',
+            '2025-12-29': 'vacation',
+            '2025-12-30': 'vacation',
+            '2025-12-31': 'vacation',
+
+        };
+        let currentMonth = 0;
+        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        
+        function generateCalendar(month) {
+            const daysContainer = document.getElementById("days");
+            daysContainer.innerHTML = "";
+            document.getElementById("month").innerText = months[month] + " 2025";
+            const daysInMonth = new Date(2025, month + 1, 0).getDate();
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayDiv = document.createElement("div");
+                dayDiv.classList.add("day");
+                const date = `2025-${(month+1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+                if (events[date]) {
+                    dayDiv.classList.add(events[date]);
+                }
+                dayDiv.innerText = day;
+                daysContainer.appendChild(dayDiv);
+            }
+        }
+        
+        function prevMonth() {
+            currentMonth = (currentMonth - 1 + 12) % 12;
+            generateCalendar(currentMonth);
+        }
+        function nextMonth() {
+            currentMonth = (currentMonth + 1) % 12;
+            generateCalendar(currentMonth);
+        }
+        
+        generateCalendar(currentMonth);
+    
+
+</script>
+
+    <!-- Apartado "Acceso sin Conexión" -->
+    <div class="acceso-sin-conexion">
+        <h2>Acceso sin conexión:</h2>
+        <a href="calendar.jpeg" target="_blank">
+            <button>Descargar Calendario Escolar</button>
+        </a>
+    </div>
+</body>
+</html>
